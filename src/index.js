@@ -16,9 +16,10 @@
  */
 import { refs } from './js/refs';
 import { createTask } from './js/createTask';
+import { addTask } from './js/localStorageAPI';
 refs.form.addEventListener('submit', onFormSubmit);
 function onFormSubmit(event) {
   event.preventDefault();
   const task = createTask(event);
-  console.log(task);
+  addTask(task);
 }
