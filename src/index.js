@@ -22,4 +22,22 @@ function onFormSubmit(event) {
   event.preventDefault();
   const task = createTask(event);
   addTask(task);
+  renderTasks();
 }
+
+function renderTasks() {
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+  const adc = tasks
+    .map(item => {
+      return `<li class="task-list-item">
+     <button class="task-list-item-btn">Удалить</button>
+      <h3>${item.taskName}</h3>
+      <p>${item.taskText}</p>
+  </li>`;
+    })
+    .join('');
+  console.log(adc);
+  refs.tasksList.innerHTML = adc;
+}
+
+renderTasks();
